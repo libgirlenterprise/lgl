@@ -11,7 +11,7 @@ pip install git+https://github.com/libgirlenterprise/lgl
 ## Features
 
 * Create project directory.
-* Find lacking packge and install after analize source code.
+* Find lacking packge and install after analyze source code.
 * manage `import` forms for the package.
 * Launch application.
 
