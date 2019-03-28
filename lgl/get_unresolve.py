@@ -32,5 +32,5 @@ def get_proper_module_name(name):
 
 def install_module(modules):
     mlist = list(dict.fromkeys([get_proper_module_name(x.split(".")[0]) for x in modules]))
-    if(mlist!=[]):
+    if not mlist:
         subprocess.run(["conda","install","-y"]+mlist)
