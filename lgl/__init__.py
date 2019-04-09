@@ -24,14 +24,25 @@ def filelist(path):
 def list_unresolved(path):
     return get_unresolve.list_unresolved(path)
 
-def add_import(paths):
+def add_import(files):
     path_ = sys.path + [os.getcwd()]
     index = importmagic.SymbolIndex()
     index.build_index(paths=path_)
-    return get_unresolve.add_import(paths,index)
+    result=[]
+    for file in files:
+        filelist_ = filelist(file)
+        if(isinstance(filelist_,list)):
+            result=result+filelist_
+    return get_unresolve.add_import(result,index)
 
-def install_module(module):
-    return get_unresolve.install_module(module)
+def install_module(basefiles):
+    result=[]
+    for file in basefiles:
+        filelist_ = filelist(file)
+        if(isinstance(filelist_,list)):
+            for file in filelist_:
+                result=result+list_unresolved(file)
+    return get_unresolve.install_module(result)
 
 def run_():
     run.cmd()

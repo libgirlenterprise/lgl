@@ -9,12 +9,8 @@ subparsers = parser.add_subparsers()
 
 # run
 def command_run (args):
-    result=[]
-    filelist = lgl.filelist("setup.py")
-    if(isinstance(filelist,list)):
-        for file in filelist:
-            result=result+lgl.list_unresolved(file)
-    lgl.install_module(result)
+    lgl.install_module(["setup.py"])
+    lgl.add_import(["setup.py"])
     lgl.run_()
 parser_run = subparsers.add_parser('run', help='see `run -h`')
 parser_run.add_argument('args', nargs='*')
@@ -22,14 +18,7 @@ parser_run.set_defaults(handler=command_run)
 
 # install
 def command_install (args):
-    result=[]
-    for file in args.file_names:
-        filelist = lgl.filelist(file)
-        if(isinstance(filelist,list)):
-            for file in filelist:
-                print(result)
-                result=result+lgl.list_unresolved(file)
-    lgl.install_module(result)
+    lgl.install_module(args.file_names)
 
 parser_install = subparsers.add_parser('install', help='see `install -h`')
 parser_install.add_argument('file_names', nargs='*')
@@ -37,12 +26,7 @@ parser_install.set_defaults(handler=command_install)
 
 # fmt
 def command_fmt (args):
-    result=[]
-    for file in args.file_names:
-        filelist = lgl.filelist(file)
-        if(isinstance(filelist,list)):
-            result=result+filelist
-    lgl.add_import(result)
+    lgl.add_import(args.file_names)
 
 parser_fmt = subparsers.add_parser('fmt', help='see `fmt -h`')
 parser_fmt.add_argument('file_names', nargs='*')
