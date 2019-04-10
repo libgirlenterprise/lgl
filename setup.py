@@ -10,6 +10,10 @@ setup(name='lgl',
       packages=['lgl'],
       zip_safe=False,
       test_suite='tests',
+      install_requires= [
+        'toml',
+        'importmagic'
+      ],
       entry_points = {
         'console_scripts': ['lgl=lgl.lgl:main'],
       },
