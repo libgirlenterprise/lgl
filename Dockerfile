@@ -1,7 +1,6 @@
 FROM ubuntu:18.04
 
-#RUN apt-get update && apt-get install -y build-essential wget
-RUN apt-get update && apt-get install -y wget
+RUN apt-get update && apt-get install -y wget git
 RUN useradd -m user
 USER user
 WORKDIR /home/user
