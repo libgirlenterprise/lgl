@@ -9,8 +9,8 @@ subparsers = parser.add_subparsers()
 
 # run
 def command_run (args):
-    lgl.install_module(["setup.py"])
-    lgl.add_import(["setup.py"])
+    lgl.install_module(["./"])
+    lgl.add_import(["./"])
     lgl.run_()
 parser_run = subparsers.add_parser('run', help='see `run -h`')
 parser_run.add_argument('args', nargs='*')
