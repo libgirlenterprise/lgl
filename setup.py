@@ -28,4 +28,12 @@ setup(name='lgl',
       entry_points = {
         'console_scripts': ['lgl=lgl.lgl:main'],
       },
+      classifiers=[
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: Apache Software License",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Topic :: Utilities",
+      ],
 )
