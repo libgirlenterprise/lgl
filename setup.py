@@ -10,7 +10,7 @@ def read_file(filename):
         return ''
 
 setup(name='lgl',
-      version='0.1',
+      version='0.1.0',
       description='launch python.',
       long_description=read_file('readme.md'),
       long_description_content_type="text/markdown",
