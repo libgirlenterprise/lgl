@@ -2,6 +2,7 @@ import os
 import sys
 import subprocess
 import toml
+import pkgutil
 
 import importmagic
 
@@ -30,7 +31,17 @@ def get_proper_module_name(name):
     parsed_toml = toml.loads(toml_src)
     return parsed_toml['dict'].get(name) or name
 
+def filter_modules(mods):
+    for m in pkgutil.iter_modules():
+        if m.name in mods:
+            mods.remove(m.name)
+    for m in mods:
+        if m in sys.builtin_module_names:
+            mods.remove(m)
+    return mods
+
 def install_module(modules):
+    modules = filter_modules(modules)
     mlist = list(dict.fromkeys([get_proper_module_name(x.split(".")[0]) for x in modules]))
     if mlist:
         subprocess.run(["conda","install","-y"]+mlist)
