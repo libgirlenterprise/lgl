@@ -41,7 +41,7 @@ def filter_modules(mods):
     return mods
 
 def install_module(modules):
-    modules = filter_modules(modules)
     mlist = list(dict.fromkeys([get_proper_module_name(x.split(".")[0]) for x in modules]))
+    mlist = filter_modules(mlist)
     if mlist:
         subprocess.run(["conda","install","-y"]+mlist)
