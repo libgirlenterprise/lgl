@@ -1,10 +1,12 @@
 import os
+import pkgutil
 import sys
 import subprocess
-import toml
-import pkgutil
+import logging
 
 import importmagic
+import toml
+
 
 def list_unresolved (path):
     with open(path) as f:
@@ -32,16 +34,22 @@ def get_proper_module_name(name):
     return parsed_toml['dict'].get(name) or name
 
 def filter_modules(mods):
+    logging.info("filter_modules origin:"+str(mods))
     for m in pkgutil.iter_modules():
         if m.name in mods:
             mods.remove(m.name)
+    logging.info("filter_modules pkgutil:"+str(mods))
     for m in mods:
         if m in sys.builtin_module_names:
             mods.remove(m)
+    logging.info("filter_modules result:"+str(mods))
     return mods
 
 def install_module(modules):
-    mlist = list(dict.fromkeys([get_proper_module_name(x.split(".")[0]) for x in modules]))
+    logging.info("install_module origin:"+str(modules))
+    mlist = list(dict.fromkeys([x.split(".")[0] for x in modules]))
+    logging.info("install_module mlist:"+str(mlist))
     mlist = filter_modules(mlist)
+    mlist = list(get_proper_module_name(x) for x in mlist)
     if mlist:
         subprocess.run(["conda","install","-y"]+mlist)
