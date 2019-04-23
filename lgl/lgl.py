@@ -3,8 +3,10 @@ import argparse
 import subprocess
 import sys
 import os
+import logging
 
 parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--verbose','-v', action='count')
 subparsers = parser.add_subparsers()
 
 # run
@@ -56,6 +58,12 @@ def ensure_initdir():
 def main():
     ensure_initdir()
     args = parser.parse_args()
+    if args.verbose:
+        if args.verbose > 1:
+            logging.basicConfig(level=logging.DEBUG)
+        elif args.verbose > 0:
+            logging.basicConfig(level=logging.INFO)
+        logging.info("verbose level:"+str(args.verbose))
     if hasattr(args, 'handler'):
         args.handler(args)
     else:
