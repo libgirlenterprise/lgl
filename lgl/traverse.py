@@ -1,6 +1,8 @@
-import setuptools
-import os
 import ast
+import os
+
+import setuptools
+
 
 setup__ = ""
 

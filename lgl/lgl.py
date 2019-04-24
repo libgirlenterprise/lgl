@@ -1,9 +1,10 @@
-import lgl
 import argparse
-import subprocess
-import sys
-import os
 import logging
+import os
+import subprocess
+
+import lgl
+
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--verbose','-v', action='count')

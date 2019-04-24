@@ -1,9 +1,8 @@
-import sys
-import os
 import importlib
-import lgl.traverse
-from pkg_resources import load_entry_point
+import os
+import sys
 
+import lgl.traverse
 import lgl
 
 def cmd():

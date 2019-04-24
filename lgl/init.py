@@ -1,5 +1,5 @@
-import sys
 import os
+
 
 def gen_setuppy(pwd,name):
     with open(pwd+os.path.sep+'setup.py', 'w') as f:
