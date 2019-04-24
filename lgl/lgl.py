@@ -12,8 +12,11 @@ subparsers = parser.add_subparsers()
 
 # run
 def command_run (args):
+    logging.info("run/install:")
     lgl.install_module(['.'+os.sep])
+    logging.info("run/add_import:")
     lgl.add_import(['.'+os.sep])
+    logging.info("run/run:")
     lgl.run_()
 parser_run = subparsers.add_parser('run', help='see `run -h`')
 parser_run.add_argument('args', nargs='*')

@@ -16,6 +16,7 @@ def list_unresolved (path):
     return list(unresolved)
 
 def add_import (paths,index):
+    logging.info("add_import :"+str(paths))
     path_ = sys.path + [os.getcwd()]
     for path in paths:
         with open(path) as f:

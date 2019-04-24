@@ -1,6 +1,7 @@
 import sys
 import os
 import pathlib
+import logging
 import lgl.run
 import lgl.init
 import lgl.traverse
@@ -25,8 +26,10 @@ def list_unresolved(path):
     return get_unresolve.list_unresolved(path)
 
 def add_import(files):
+    logging.info("add_import:"+str(files))
     path_ = sys.path + [os.getcwd()]
     index = importmagic.SymbolIndex()
+    logging.info("add_import: build index")
     index.build_index(paths=path_)
     result=[]
     for file in files:
