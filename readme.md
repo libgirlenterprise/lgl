@@ -2,7 +2,7 @@
 
 libgirl launcher is a packaging manager to create python project
 
-![lgl demo](lgl_demo.gif)
+![lgl demo](assets/lgl_demo.gif)
 
 ## Installation
 
