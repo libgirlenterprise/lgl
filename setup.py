@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 import os
 
 def read_file(filename):
@@ -18,7 +18,7 @@ setup(name='lgl',
       author='Team Libgirl',
       author_email='team@libgirl.com',
       license='Apache License 2.0',
-      packages=['lgl'],
+      packages=find_packages(exclude=['assets', 'target_projects']),
       zip_safe=False,
       test_suite='tests',
       install_requires= [
